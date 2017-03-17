@@ -1,0 +1,189 @@
+<!doctype html>
+html
+  head
+    title
+      | ASIMO
+    link(rel='stylesheet', type='text/css', href='file://#{basePath}/pdftemplate.css')
+  body
+    .section
+      .title
+        h5 I. TYPE OF MORTAGE AND TERMS OF LOAN
+    .section
+      .title
+        h5 II. PROPERTY INFORMATION AND PURPOSE OF LOAN
+      .prompts
+        .flex-container.row
+          .flex-item.col-11.row-start
+            span
+              | Subject Property Address (street, city, state & ZIP)
+              br
+              | #{section.propertyInformation.subjectPropertyAddress}
+          .flex-item.col-1
+            span
+              | No.of Units
+              br
+              | #{section.propertyInformation.noOfUnits}
+        .flex-container.row
+          .flex-item.col-11.row-start
+            span
+              | Legal Description of Subject Property (attach description if necessary)
+              br
+              | #{section.propertyInformation.legalDescription}
+          .flex-item.col-1
+            span
+              | Year Built
+              br
+              | #{section.propertyInformation.yearBuilt}
+        .flex-container.row
+          .flex-item.col-3.row-start
+              .flex-container.inline
+                .flex-item.inline.col-4
+                  | Purpose of Loan
+                .flex-item.inline.col-4
+                  .flex-container.inline.column
+                    .flex-item.radio.col-1
+                      input(type="radio", name="purposeOfLoan", value="purchase",
+                        checked=section.propertyInformation.purposeOfLoan=="purchase")
+                      | Purchase
+                    .flex-item.radio.col-1
+                      input(type="radio", name="purposeOfLoan", value="refinance",
+                        checked=section.propertyInformation.purposeOfLoan=="refinance")
+                      | Refinance
+                .flex-item.inline.col-6
+                  .flex-container.inline.column
+                    .flex-item.radio.col-1
+                      input(type="radio", name="purposeOfLoan", value="construction",
+                        checked=section.propertyInformation.purposeOfLoan=="construction")
+                      | Construction
+                    .flex-item.radio.col-1
+                      input(type="radio", name="purposeOfLoan", value="construction-permanent",
+                        checked=section.propertyInformation.purposeOfLoan=="construction-permanent")
+                      | Construction-Permanent
+                .flex-item.inline.col-6
+                  .flex-container.inline
+                    .flex-item.radio.col-1
+                      input(type="radio", name="purposeOfLoan", value="other",
+                        checked=section.propertyInformation.purposeOfLoan=="other")
+                      | Other (explain):
+                      br
+                      | #{section.propertyInformation.purposeOfLoanExplanation}
+          .flex-item.col-2
+            span
+              | Property will be:
+              br
+              .flex-container.inline
+                .flex-item.radio.col-1
+                  input(type="radio", name="propertyWillBe", value="primary residence",
+                    checked=section.propertyInformation.propertyWillBe=="primary residence")
+                  | Primary Residence
+                .flex-item.radio.col-1
+                  input(type="radio", name="propertyWillBe", value="secondary residence",
+                    checked=section.propertyInformation.propertyWillBe=="secondary residence")
+                  | Secondary Residence
+                .flex-item.radio.col-1
+                  input(type="radio", name="propertyWillBe", value="investment",
+                    checked=section.propertyInformation.propertyWillBe=="investment")
+                  | Investment
+        .flex-container.row
+          span.row-title Complete this line if construction or construction-permanent loan.
+        .flex-container.row
+          .flex-item.col-1.row-start
+            span
+              | Year Lot Acquired
+              br
+              br
+              | #{section.propertyInformation.construction.yearLotAcquired}
+          .flex-item.col-2
+            span
+              | Original Cost
+              br
+              br
+              br
+              | #{format.currency(section.propertyInformation.construction.originalCost)}
+          .flex-item.col-2
+            span
+              | Amount Existing Liens
+              br
+              br
+              | #{format.currency(section.propertyInformation.construction.amountExistingLiens)}
+          .flex-item.col-2
+            span
+              | (a) Present Value of Lot
+              br
+              br
+              | #{format.currency(section.propertyInformation.construction.presentValueOfLot)}
+          .flex-item.col-2
+            span
+              | (b) Cost of Improvements
+              br
+              br
+              | #{format.currency(section.propertyInformation.construction.costOfImprovements)}
+          .flex-item.col-2
+            span
+              | Total (a + b)
+              br
+              br
+              br
+              | #{format.currency(section.propertyInformation.construction.total)}
+        .flex-container.row
+          span.row-title Complete this line if this is a refinance loan.
+        .flex-container.row
+          .flex-item.col-1.row-start
+            span
+              | Year Acquired
+              br
+              br
+              | #{section.propertyInformation.refinance.yearAcquired}
+          .flex-item.col-2
+            span
+              | Original Cost
+              br
+              br
+              br
+              | #{format.currency(section.propertyInformation.refinance.originalCost)}
+          .flex-item.col-2
+            span
+              | Amount Existing Liens
+              br
+              br
+              | #{format.currency(section.propertyInformation.refinance.amountExistingLiens)}
+          .flex-item.col-2
+            span
+              | Purpose of Refinance
+              br
+              br
+              | #{section.propertyInformation.refinance.purposeOfRefinance}
+          .flex-item.col-4
+            span
+              | Describe Improvements
+              br
+              br
+              br
+              | #{section.propertyInformation.refinance.improvementsMade}
+              | #{section.propertyInformation.refinance.improvementsToBeMade}
+
+    .section
+      .title
+        h5 Section 3
+
+    .main-content
+      .main
+        .header.fhass.title
+          h5 FHA to FHA REFINANCE TRANSACTIONS CHECKLIST
+          h5.title Streamline Same Servicer Credit and Non-Credit Qualifying
+          h5.title Effective for Case Numbers assigned on or after September 14, 2015
+        .loan-details
+          dl
+            dt Borrower:
+            dd.no-background #{borrower}
+            dt Co-Borrower:
+            dd.no-background #{coBorrower}
+            dt Address:
+            dd.no-background #{address}
+            dt Loan Number:
+            dd.no-background #{loanNumber}
+        .header.instruction
+          span
+            | To be completed and signed by the #{role} prior to final approval
+            br
+            | Reference FHA Streamline Same Servicer/Non-Same Servicer and Simple Refinance Matrix if any questions
