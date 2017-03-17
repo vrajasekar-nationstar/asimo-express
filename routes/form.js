@@ -176,7 +176,7 @@ const processCheckboxFields = (data, checkboxFieldConfig) => {
 };
 
 router.post('/write', (req, res) => {
-  let inputData = req.body || {};
+  let inputData = req.body.data || {};
   inputData.purposeOfLoan = 'Refinance';
   const textData = processTextFields(inputData, textFieldConfig);
   const checkboxData = processCheckboxFields(inputData, checkboxFieldConfig);
