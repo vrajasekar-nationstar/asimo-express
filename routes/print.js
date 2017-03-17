@@ -46,8 +46,10 @@ router.get('/', (req, res) => {
           originalCost: 1200000,
           amountExistingLiens: 10000,
           purposeOfRefinance: "Better Interest Rate",
-          improvementsMade: "",
-          improvementsToBeMade: "New Swimming Pool at the backyard"
+          improvementsMade: false,
+          improvementsToBeMade: true,
+          improvements: "New Swimming Pool at the backyard",
+          costOfImprovements: 20000
         },
       }
     }

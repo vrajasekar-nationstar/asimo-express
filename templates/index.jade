@@ -7,12 +7,12 @@ html
   body
     .section
       .title
-        h5 I. TYPE OF MORTAGE AND TERMS OF LOAN
+        h3 I. TYPE OF MORTAGE AND TERMS OF LOAN
     .section
       .title
-        h5 II. PROPERTY INFORMATION AND PURPOSE OF LOAN
+        h3 II. PROPERTY INFORMATION AND PURPOSE OF LOAN
       .prompts
-        .flex-container.row
+        .flex-container.row.column-start
           .flex-item.col-11.row-start
             span
               | Subject Property Address (street, city, state & ZIP)
@@ -91,12 +91,10 @@ html
             span
               | Year Lot Acquired
               br
-              br
               | #{section.propertyInformation.construction.yearLotAcquired}
           .flex-item.col-2
             span
               | Original Cost
-              br
               br
               br
               | #{format.currency(section.propertyInformation.construction.originalCost)}
@@ -123,7 +121,6 @@ html
               | Total (a + b)
               br
               br
-              br
               | #{format.currency(section.propertyInformation.construction.total)}
         .flex-container.row
           span.row-title Complete this line if this is a refinance loan.
@@ -131,6 +128,7 @@ html
           .flex-item.col-1.row-start
             span
               | Year Acquired
+              br
               br
               br
               | #{section.propertyInformation.refinance.yearAcquired}
@@ -146,21 +144,30 @@ html
               | Amount Existing Liens
               br
               br
+              br
               | #{format.currency(section.propertyInformation.refinance.amountExistingLiens)}
           .flex-item.col-2
             span
               | Purpose of Refinance
               br
               br
+              br
               | #{section.propertyInformation.refinance.purposeOfRefinance}
           .flex-item.col-4
-            span
-              | Describe Improvements
+              .flex-container.inline
+                .flex-item.radio.col-3
+                  | Describe Improvements
+                .flex-item.radio.col-2
+                  input(type="radio", name="improvementsMade", value="improvementsMade",
+                    checked=section.propertyInformation.refinance.improvementsMade)
+                  | made
+                .flex-item.radio.col-2
+                  input(type="radio", name="improvementsToBeMade", value="improvementsToBeMade",
+                    checked=section.propertyInformation.refinance.improvementsToBeMade)
+                  | to be made
+              | #{section.propertyInformation.refinance.improvements}
               br
-              br
-              br
-              | #{section.propertyInformation.refinance.improvementsMade}
-              | #{section.propertyInformation.refinance.improvementsToBeMade}
+              | Cost: #{format.currency(section.propertyInformation.refinance.costOfImprovements)}
 
     .section
       .title

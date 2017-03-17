@@ -1,5 +1,6 @@
 body {
-  font-size: 10px;
+  font-size: 12px;
+  font-family: "Times New Roman", Times, serif;
 }
 
 input[type="radio"] {
@@ -74,10 +75,7 @@ span.row-title {
 
 .flex-item.col-2 {
     -webkit-flex: 2;
-    flex: 2;.flex-item.radio.col-1
-                      input(type="radio", name="purposeOfLoan", value="construction",
-                        checked=section.propertyInformation.purposeOfLoan=="construction")
-                      | Construction
+    flex: 2;
 }
 
 .flex-item.col-3 {
