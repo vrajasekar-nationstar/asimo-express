@@ -1,3 +1,4 @@
+"use strict";
 const express = require('express');
 const router = express.Router();
 const path = require('path');
@@ -107,10 +108,8 @@ checkboxFieldConfig = {
 const processTextFields = (data, textFieldConfig) => {
   var result = {};
   _.each(textFieldConfig, (value, key) => {
-    console.log('Text Fields key value', key, value);
     result[value] = _.get(data, key, '');
   });
-  console.log('Text Fields', result);
   return result;
 };
 
@@ -126,19 +125,15 @@ const processCheckboxFields = (data, checkboxFieldConfig) => {
       result[checkedKeyId] = true;
     }
   });
-  console.log('checkbox Fields', result);
   return result;
 };
 
 router.post('/write', (req, res) => {
-  const inputData = req.body.data || {};
+  let inputData = req.body || {};
   inputData.purposeOfLoan = 'Refinance';
   const textData = processTextFields(inputData, textFieldConfig);
   const checkboxData = processCheckboxFields(inputData, checkboxFieldConfig);
   const dataToFill = _.merge(textData, checkboxData);
-
-  console.log('datatofill', dataToFill);
-
   const options = {
     "save": "pdf"
   };
