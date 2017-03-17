@@ -1,0 +1,21 @@
+{
+  "apps": [
+    {
+      "name": "asimo",
+      "script": "bin/www",
+      "watch": true,
+      "instances": 1,
+      "ignore_watch": [
+        "logs",
+        "node_modules",
+        ".git"
+      ],
+      "env": {
+        "DEBUG": "asimo:*"
+      },
+      "log_file": "./logs/asimo.log",
+      "out_file": "./logs/asimo_access.log",
+      "err_file": "./logs/asimo_error.log"
+    }
+  ]
+}
