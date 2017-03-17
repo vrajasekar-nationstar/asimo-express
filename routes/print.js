@@ -51,6 +51,11 @@ router.get('/', (req, res) => {
           improvements: "New Swimming Pool at the backyard",
           costOfImprovements: 20000
         },
+        titleName: "Sean Bean, Violet Bean ",
+        titleManner: "Mr and Mrs Bean",
+        sourceDetails: "Annual bonus for working as Solution Architect at Google",
+        estateWillBeHeldIn: 'leasehold',
+        leasholdExpiryDate: '04/01/2017'
       }
     }
   };

@@ -4,13 +4,14 @@ html
     title
       | ASIMO
     link(rel='stylesheet', type='text/css', href='file://#{basePath}/pdftemplate.css')
+
   body
     .section
-      .title
-        h3 I. TYPE OF MORTAGE AND TERMS OF LOAN
+      span.title
+        | I. TYPE OF MORTAGE AND TERMS OF LOAN
     .section
-      .title
-        h3 II. PROPERTY INFORMATION AND PURPOSE OF LOAN
+      span.title
+        | II. PROPERTY INFORMATION AND PURPOSE OF LOAN
       .prompts
         .flex-container.row.column-start
           .flex-item.col-11.row-start
@@ -168,29 +169,45 @@ html
               | #{section.propertyInformation.refinance.improvements}
               br
               | Cost: #{format.currency(section.propertyInformation.refinance.costOfImprovements)}
-
+        .flex-container.row
+          .flex-item.no-padding.col-10.row-start
+            .flex-container.column.nested-border
+              .flex-item
+                .flex-container.no-padding
+                  .flex-item.inline.col-2
+                    span
+                    | Title will be held in what Name(s)
+                    br
+                    br
+                    | #{section.propertyInformation.titleName}
+                  .flex-item.col-1
+                    span
+                    | Manner in which Title will be held
+                    br
+                    br
+                    | #{section.propertyInformation.titleManner}
+              .flex-item
+                span
+                | Source of Down Payment, Settlement Charges, and/or Subordinate Financing (explain)
+                br
+                br
+                | #{section.propertyInformation.sourceDetails}
+          .flex-item.col-2
+            .flex-container.inline.column
+              .flex-item.inline.col-1
+                span
+                | Estate will be held in:
+              .flex-item.radio.col-1
+                input(type="radio", name="estateWillBeHeldIn", value="secondary residence",
+                  checked=section.propertyInformation.estateWillBeHeldIn=="fee simple")
+                | Fee Simple
+              .flex-item.radio.col-1
+                input(type="radio", name="estateWillBeHeldIn", value="investment",
+                  checked=section.propertyInformation.estateWillBeHeldIn=="leasehold")
+                | Leasehold (show expiration date)
+                br
+                br
+                | #{section.propertyInformation.leasholdExpiryDate}
     .section
-      .title
-        h5 Section 3
-
-    .main-content
-      .main
-        .header.fhass.title
-          h5 FHA to FHA REFINANCE TRANSACTIONS CHECKLIST
-          h5.title Streamline Same Servicer Credit and Non-Credit Qualifying
-          h5.title Effective for Case Numbers assigned on or after September 14, 2015
-        .loan-details
-          dl
-            dt Borrower:
-            dd.no-background #{borrower}
-            dt Co-Borrower:
-            dd.no-background #{coBorrower}
-            dt Address:
-            dd.no-background #{address}
-            dt Loan Number:
-            dd.no-background #{loanNumber}
-        .header.instruction
-          span
-            | To be completed and signed by the #{role} prior to final approval
-            br
-            | Reference FHA Streamline Same Servicer/Non-Same Servicer and Simple Refinance Matrix if any questions
+      span.title
+        | III. BORROWER INFORMATION
